@@ -1,0 +1,32 @@
+* Inbox
+** [0/5] Board
+*** TODO shootAt(coords) - notes the shot, returns hit/miss
+*** TODO addShip(ship, coords) - adds ship
+**** TODO Check if coords exist
+**** TODO Check if ship fits
+**** TODO Check if legal to put ship there given other ships
+**** TODO Mark places where it is illegal to put the ship
+*** TODO  allShipsDead() - returns if all ships are destroyed
+**** TODO Have array of ships or destroyed ship count vs total
+*** TODO
+** [0/1] Ship
+*** TODO What should ship know?
+- size
+- horizontal/vertical
+- damage (private)
+- destroyed?()
+** [0/8] HTML
+*** TODO Generate grid of buttons with x,y coords
+*** TODO Add text and info elements
+*** TODO Add game start/restart buttons
+** [0/1] CSS
+*** TODO Create elements representing ships
+*** TODO Organize buttons
+*** TODO Style buttons
+*** TODO Create wireframe for two game grids
+** [0/1] Game
+*** TODO
+** [0/1] AI
+*** TODO
+** [0/1] EventListeners
+*** TODO
