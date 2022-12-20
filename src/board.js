@@ -41,5 +41,9 @@ export class Board {
     return this.#board[coords.y][coords.x];
   }
 
+  legalShipSpot(coords) {
+    return this.#valueAt(coords) == "water";
+  }
+
   }
 }
