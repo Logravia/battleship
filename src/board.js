@@ -45,5 +45,13 @@ export class Board {
     return this.#valueAt(coords) == "water";
   }
 
+  #markAdjacent(coords) {
+    let toMark = helper.squaresAround(coords);
+    toMark.forEach((markSpot)=>{
+      let sqrContent = this.#valueAt(markSpot)
+      if (sqrContent == "water") {this.#board[markSpot.y][markSpot.x] = "adjacent"};
+    })
+  }
+
   }
 }
