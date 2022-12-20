@@ -24,11 +24,11 @@ export class BoardHelper {
    let line = []
     if (dir == "vertical") {
       for (let i = 0; i < len; i++) {
-        line.push({x: coords.x + i, y: coords.y});
+        line.push({x: coords.x, y: coords.y + i});
       }
     } else {
       for (let i = 0; i < len; i++) {
-        line.push({x: coords.x, y: coords.y + i});
+        line.push({x: coords.x + i, y: coords.y});
       }
     }
     return line;
