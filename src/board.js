@@ -53,5 +53,14 @@ export class Board {
     })
   }
 
+  addShip(coords, ship) {
+    let sqrsToTake = helper.squareLine(coords, ship.size);
+    if (!sqrsToTake.every(sqr=>this.legalShipSpot(sqr))) {return false}
+
+    sqrsToTake.forEach(sqr => {
+      this.#markAdjacent({x: sqr.x, y: sqr.y});
+      this.#board[sqr.y][sqr.x] = ship;
+    })
+    return true;
   }
 }
