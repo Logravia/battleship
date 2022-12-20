@@ -44,6 +44,7 @@ export class Board {
   }
 
   #valueAt (coords) {
+    if (!helper.withinBoard(coords)) {return "INVALID COORDS"};
     return this.#board[coords.y][coords.x];
   }
 

@@ -79,6 +79,19 @@ it("Does not put ship on adjacent water tiles", ()=>{
   expect(board.overview()[2][0]).toBe("adjacent");
 });
 
+
+it("Does not put ship where it cannot fit", ()=>{
+  let coords = {x: 9, y: 9};
+
+  let size = 2;
+  let direction = "vertical";
+  let ship = new Ship(size, direction);
+
+  board.addShip(coords, ship)
+
+  expect(board.overview()[9][9]).toBe("water");
+});
+
 it("Notes missed shot as a miss", ()=>{
   let coords = {x: 0, y: 0};
   board.shootAt(coords)
