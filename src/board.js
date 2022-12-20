@@ -36,5 +36,10 @@ export class Board {
     })
     return copy;
   }
+
+  #valueAt (coords) {
+    return this.#board[coords.y][coords.x];
+  }
+
   }
 }
