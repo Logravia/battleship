@@ -56,7 +56,6 @@ it("Marks adjacent squares next to the ship", ()=>{
   let ship = new Ship(size, direction);
 
   board.addShip(coords, ship)
-  console.log(board.overview());
   expect(board.overview()[0][1]).toBe("adjacent");
   expect(board.overview()[1][1]).toBe("adjacent");
   expect(board.overview()[2][1]).toBe("adjacent");
@@ -78,4 +77,22 @@ it("Does not put ship on adjacent water tiles", ()=>{
   expect(board.overview()[1][1]).toBe("adjacent");
   expect(board.overview()[2][1]).toBe("adjacent");
   expect(board.overview()[2][0]).toBe("adjacent");
+});
+
+it("Notes missed shot as a miss", ()=>{
+  let coords = {x: 0, y: 0};
+  board.shootAt(coords)
+  expect(board.overview()[0][0]).toBe("miss");
+});
+
+it("Notes a hit as a hit", ()=>{
+  let coords = {x: 0, y: 0};
+  let size = 2;
+  let direction = "vertical";
+  let ship = new Ship(size, direction);
+  board.addShip(coords, ship)
+
+  board.shootAt(coords);
+
+  expect(board.overview()[0][0]).toBe("hit");
 });
