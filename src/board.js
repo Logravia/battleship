@@ -17,7 +17,24 @@ export class Board {
     return new Array(size);
   }
 
+  // returns simplified overview of the board with values
+  // hit/miss/water/ship/adjacent
   overview () {
-    return this.#board;
+    let copy = [];
+
+    this.#board.forEach((row,y)=>{
+      copy.push([]);
+
+      row.forEach(sqr=>{
+       if (typeof sqr == 'string') {
+         copy[y].push(sqr)
+       } else {
+         copy[y].push("ship");
+       }
+      })
+
+    })
+    return copy;
+  }
   }
 }
