@@ -1,16 +1,14 @@
 * Inbox
-** [0/5] Board
-*** TODO shootAt(coords) - notes the shot, returns hit/miss
-*** TODO addShip(ship, coords) - adds ship
-**** TODO Check if coords exist
-**** TODO Check if ship fits
-**** TODO Check if legal to put ship there given other ships
-**** TODO Mark places where it is illegal to put the ship
-*** TODO  allShipsDead() - returns if all ships are destroyed
-**** TODO Have array of ships or destroyed ship count vs total
-*** TODO
-** [0/1] Ship
-*** TODO What should ship know?
+** [3/3] Board
+*** DONE shootAt(coords) - notes the shot, returns hit/miss
+*** DONE addShip(ship, coords) - adds ship
+**** DONE Check if coords exist
+**** DONE Check if ship fits
+**** DONE Check if legal to put ship there given other ships
+**** DONE Mark places where it is illegal to put the ship
+*** DONE allShipsDead() - returns if all ships are destroyed
+** [1/1] Ship
+*** DONE What should ship know?
 - size
 - horizontal/vertical
 - damage (private)
