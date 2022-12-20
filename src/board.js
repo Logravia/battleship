@@ -69,4 +69,9 @@ export class Board {
     })
     return true;
   }
+
+  #setValue(coords, val) {
+    this.#board[coords.y][coords.x] = val;
+  }
+
 }
