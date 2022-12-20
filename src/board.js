@@ -2,9 +2,11 @@ import {BoardHelper as helper} from "./board_helper.js"
 
 export class Board {
   #board;
+  #ships;
 
   constructor() {
     this.#board = Board.#generateBoard();
+    this.#ships = [];
   }
 
   static #generateBoard(rows=10) {
@@ -67,8 +69,16 @@ export class Board {
     sqrsToTake.forEach(sqr => {
       this.#markAdjacent({x: sqr.x, y: sqr.y});
       this.#board[sqr.y][sqr.x] = ship;
+      this.#ships.push(ship)
     })
     return true;
+  }
+
+  allShipsDead() {
+    if (this.#ships.length == 0) { return true }
+    return this.#ships.every(ship=>{
+      ship.isDead()
+    })
   }
 
   #setValue(coords, val) {
@@ -79,11 +89,11 @@ export class Board {
     let sqrContent = this.#valueAt(coords);
     if (typeof sqrContent == "string") {
       this.#setValue(coords, "miss")
-      return false;
+      return "miss";
     } else {
       this.#setValue(coords, "hit")
       sqrContent.addDamage();
-      return true;
+      return "hit";
     }
   }
 }

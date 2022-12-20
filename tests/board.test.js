@@ -109,3 +109,28 @@ it("Notes a hit as a hit", ()=>{
 
   expect(board.overview()[0][0]).toBe("hit");
 });
+
+it("Knows that not all ships have been destroyed", ()=>{
+  let coords = {x: 0, y: 0};
+  let size = 2;
+  let direction = "vertical";
+  let ship = new Ship(size, direction);
+  board.addShip(coords, ship)
+
+  board.shootAt(coords);
+
+  expect(board.allShipsDead()).toBe(false);
+});
+
+it("Knows that all ships have been destroyed", ()=>{
+  let coords = {x: 0, y: 0};
+  let size = 2;
+  let direction = "vertical";
+  let ship = new Ship(size, direction);
+  board.addShip(coords, ship)
+
+  board.shootAt({x:0, y: 0});
+  board.shootAt({x:0, y: 1});
+
+  expect(board.allShipsDead()).toBe(false);
+});
