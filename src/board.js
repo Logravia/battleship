@@ -74,4 +74,15 @@ export class Board {
     this.#board[coords.y][coords.x] = val;
   }
 
+  shootAt(coords) {
+    let sqrContent = this.#valueAt(coords);
+    if (typeof sqrContent == "string") {
+      this.#setValue(coords, "miss")
+      return false;
+    } else {
+      this.#setValue(coords, "hit")
+      sqrContent.addDamage();
+      return true;
+    }
+  }
 }
