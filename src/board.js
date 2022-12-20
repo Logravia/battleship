@@ -1,3 +1,5 @@
+import {BoardHelper as helper} from "./board_helper.js"
+
 export class Board {
   #board;
 
@@ -14,7 +16,11 @@ export class Board {
   }
 
   static #generateRow(size=10) {
-    return new Array(size);
+    let row = [];
+    for (let i = 0; i < size; i++) {
+      row.push("water");
+    }
+    return row
   }
 
   // returns simplified overview of the board with values
