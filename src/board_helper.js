@@ -19,4 +19,18 @@ export class BoardHelper {
 
     return squares;
   }
+
+  static squareLine(coords, len, dir="vertical"){
+   let line = []
+    if (dir == "vertical") {
+      for (let i = 0; i < len; i++) {
+        line.push({x: coords.x + i, y: coords.y});
+      }
+    } else {
+      for (let i = 0; i < len; i++) {
+        line.push({x: coords.x, y: coords.y + i});
+      }
+    }
+    return line;
+  }
 }

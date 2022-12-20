@@ -61,3 +61,21 @@ it("returns only squares within the board", ()=>{
   let answer = [];
   expect(helper.squaresAround(coords)).toEqual(answer)
 });
+
+
+it("returns vertical line of squares from (0,0) length of 3", ()=>{
+  let coords = {x: 0, y: 0};
+  let len = 3
+  let line = helper.squareLine(coords, len, "vertical")
+  let answer = [{x:0, y:0},{x:1,y:0},{x:2,y:0}]
+  expect(line).toEqual(answer);
+})
+
+
+it("returns horizontal line of squares from (0,0) length of 3", ()=>{
+  let coords = {x: 0, y: 0};
+  let len = 3
+  let line = helper.squareLine(coords, len, "horizontal")
+  let answer = [{x:0, y:0},{x:0,y:1},{x:0,y:2}]
+  expect(line).toEqual(answer);
+})
