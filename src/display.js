@@ -101,12 +101,18 @@ export class Display {
     return rowDiv
   }
 
+  rotateShip(ship) {
+    let dir = ship.dataset.dir;
+    ship.dataset.dir = dir == "vertical" ? "horizontal" : "vertical"
+  }
+
   highlightShipArea (sqr, ship) {
-    console.log("HighlightShip", sqr);
+    sqr.appendChild(ship);
   }
 
   removeShipHighlight (sqr, ship) {
-    console.log("Remove highlight", sqr);
+    console.log(sqr, ship)
+    this.selectionContainer.appendChild(ship);
   }
 
   highlightPreShot (sqr) {
@@ -120,9 +126,4 @@ export class Display {
   highlightShip (ship) {
    //TODO
   }
-
-  removeShipHighlight (ship){
-    //TODO
-  }
-
 }
