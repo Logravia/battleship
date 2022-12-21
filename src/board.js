@@ -80,6 +80,17 @@ export class Board {
     return true;
   }
 
+  tempOverview(coords, ship){
+    if (!this.legalSpotForShip(coords, ship)) { return this.overview(); }
+    let temp = this.overview();
+
+    let sqrsToTake = helper.squareLine(coords, ship.size, ship.direction);
+    sqrsToTake.forEach(sqr => {
+      temp[sqr.y][sqr.x] = "temp-ship"
+    })
+    return temp;
+  }
+
   allShipsDead() {
     if (this.#ships.length == 0) { return true }
     return this.#ships.every(ship=>{
