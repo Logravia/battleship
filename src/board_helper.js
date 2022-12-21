@@ -1,6 +1,7 @@
 export class BoardHelper {
   static HEIGHT = 10
   static WIDTH = 10
+  static SHIP_LENGTHS = [5,4,3,3,2];
 
   static withinBoard(coords) {
     return (coords.x >= 0 && coords.x < this.WIDTH) && (coords.y >= 0 && coords.y < this.HEIGHT)
