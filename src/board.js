@@ -63,7 +63,7 @@ export class Board {
   }
 
   addShip(coords, ship) {
-    let sqrsToTake = helper.squareLine(coords, ship.size);
+    let sqrsToTake = helper.squareLine(coords, ship.size, ship.direction);
     if (!sqrsToTake.every(sqr=>this.legalShipSpot(sqr))) {return false}
 
     sqrsToTake.forEach(sqr => {
