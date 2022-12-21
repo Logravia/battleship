@@ -50,9 +50,10 @@ export class Board {
     return this.#board[coords.y][coords.x];
   }
 
-  legalShipSpot(coords) {
+  legalSpot(coords) {
     return this.#valueAt(coords) == "water";
   }
+
 
   #markAdjacent(coords) {
     let toMark = helper.squaresAround(coords);
@@ -62,10 +63,15 @@ export class Board {
     })
   }
 
-  addShip(coords, ship) {
+  legalSpotForShip(coords, ship) {
     let sqrsToTake = helper.squareLine(coords, ship.size, ship.direction);
-    if (!sqrsToTake.every(sqr=>this.legalShipSpot(sqr))) {return false}
+    return (sqrsToTake.every(sqr => this.legalSpot(sqr)))
+  }
 
+  addShip(coords, ship) {
+    if (!this.legalSpotForShip(coords, ship)) { return false }
+
+    let sqrsToTake = helper.squareLine(coords, ship.size, ship.direction);
     sqrsToTake.forEach(sqr => {
       this.#markAdjacent({x: sqr.x, y: sqr.y});
       this.#board[sqr.y][sqr.x] = ship;
