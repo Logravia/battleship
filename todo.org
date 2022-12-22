@@ -13,18 +13,19 @@
 - horizontal/vertical
 - damage (private)
 - destroyed?()
-** [0/8] HTML
-*** TODO Generate grid of buttons with x,y coords
+** [1/3] HTML
+*** DONE Generate grid of buttons with x,y coords
 *** TODO Add text and info elements
 *** TODO Add game start/restart buttons
-** [0/1] CSS
-*** TODO Create elements representing ships
-*** TODO Organize buttons
+** [3/4] CSS
+*** DONE Create elements representing ships
+*** DONE Organize buttons
 *** TODO Style buttons
-*** TODO Create wireframe for two game grids
+*** DONE Create wireframe for two game grids
 ** [0/1] Game
 *** TODO
-** [0/1] AI
-*** TODO
-** [0/1] EventListeners
-*** TODO
+** [0/0] AI
+** [3/4] EventListeners
+*** DONE mousein - highlight where the ship can/can't go
+*** DONE mouseout - remove the highlight
+*** DONE mousein - highlight area to shoot
