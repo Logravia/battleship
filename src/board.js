@@ -54,6 +54,9 @@ export class Board {
     return this.#valueAt(coords) == "water";
   }
 
+  legalShot(coords) {
+    return this.#valueAt(coords) == "water" || typeof this.#valueAt(coords) == 'object';
+  }
 
   #markAdjacent(coords) {
     let toMark = helper.squaresAround(coords);
@@ -70,7 +73,6 @@ export class Board {
 
   addShip(coords, ship) {
     if (!this.legalSpotForShip(coords, ship)) { return false }
-
     let sqrsToTake = helper.squareLine(coords, ship.size, ship.direction);
     sqrsToTake.forEach(sqr => {
       this.#markAdjacent({x: sqr.x, y: sqr.y});
