@@ -1,0 +1,102 @@
+#two-frames{
+    display: flex;
+    gap: 25px;
+}
+
+.selection-container {
+    border: solid;
+    width: 50%;
+    padding: 20px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 35px;
+}
+
+.ship-section-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.ship {
+    background-color: red;
+    width: min-content
+}
+
+.ship-section {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border: solid;
+    border-width: 1px;
+}
+
+.grid-btn {
+    width: 20px;
+    height: 20px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 0;
+    box-sizing: content-box;
+}
+
+[data-dir="horizontal"] {
+    display: flex;
+    flex-direction: row;
+}
+
+.selection-container .ship:hover .ship-section {
+    background-color: yellow;
+}
+
+button {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.rowDiv {
+    display: flex;
+}
+
+
+.number, .letter {
+    width: 20px;
+    height: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    box-sizing: content-box;
+}
+
+.ship-area-highlight {
+    position: relative;
+}
+
+.temp-ship {
+    background-color: red;
+}
+
+.adjacent {
+    background-color: #ec797929;
+}
+
+.selected-ship {
+    padding: 5px;
+
+    background-color:#0040ff59;
+}
+
+.miss {
+    background-color: gray;
+}
+
+.hit {
+    background-color: red;
+}
