@@ -34,24 +34,37 @@ export class Listeners {
       btn.addEventListener("click", e=>{
         let sqr = e.currentTarget;
         let coords = {x: Number(sqr.dataset.x), y: Number(sqr.dataset.y)}
+
+        e.currentTarget.textContent = ""
         this.#putShip(coords);
       })
       //Highlight where ship will be placed based on cursor, shipSize
       btn.addEventListener("mouseenter", e=>{
         if (this.selectedShip) {
-          this.display.highlightShipArea(e.currentTarget, this.selectedShip)
+          let x = e.currentTarget.dataset.x
+          let y = e.currentTarget.dataset.y
+          let coords = {x: Number(x), y: Number(y)}
+          this.display.update(this.board.tempOverview(coords, this.makeShip()))
+          // Shows X when illegal to put the ship
+          if (e.currentTarget.className == "adjacent grid-btn" ||
+              (e.currentTarget.className == "water grid-btn" && this.selectedShip)) {
+            e.currentTarget.textContent = "X"
+          }
         }
       })
       // Remove highlight
       btn.addEventListener("mouseleave", e=>{
         if(this.selectedShip){
-          this.display.removeShipHighlight(e.target, this.selectedShip)
+          this.display.update(this.board.overview())
+          e.currentTarget.textContent = ""
         }
       })
     })
     //for ships to be placed
     this.ships.forEach(ship=>{
       ship.addEventListener("click", e=>{
+        if (this.selectedShip) {this.selectedShip.className = "ship"}
+        e.currentTarget.className = "selected-ship ship"
         this.selectedShip = e.currentTarget;
       })
 
@@ -72,17 +85,19 @@ export class Listeners {
       //Highlight where the shot will take place
       btn.addEventListener("mouseenter", e=>{
         this.display.highlightPreShot(e.currentTarget)
+        e.currentTarget.textContent = "X"
       })
       //Remove the highlight
       btn.addEventListener("mouseleave", e=>{
         this.display.removePreShotHighlight(e.target)
+        e.currentTarget.textContent = ""
       })
     })
   }
 
   #takeShot (coords) {
     this.board.shootAt(coords);
-    this.display.update(this.board.overview());
+    this.display.shootModeUpdate(this.board.overview());
   }
 
   makeShip() {
