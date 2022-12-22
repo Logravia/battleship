@@ -2,19 +2,32 @@ import {BoardHelper as helper} from "./board_helper.js"
 
 export class Display {
 
-  constructor () {
+  constructor (showShips=true) {
     this.gridButtons = [];
     this.ships = [];
     this.twoGrids = document.querySelector("#two-frames");
     this.selectionContainer = document.querySelector(".selection-container")
     this.#addFrame();
-    this.addShips();
+    if (showShips){ this.addShips() }
   }
 
   update(state) {
     this.gridButtons.forEach(btn=>{
       btn.className = `${state[btn.dataset.y][btn.dataset.x]} grid-btn`
     });
+  }
+
+
+  shootModeUpdate(state) {
+    this.gridButtons.forEach(btn=>{
+      let sqrState = state[btn.dataset.y][btn.dataset.x];
+      if (!this.#legalToShowState(sqrState)){return};
+      btn.className = `${sqrState} grid-btn`
+    });
+  }
+
+  #legalToShowState(state) {
+    return state == "water" || state == "miss" || state == "hit"
   }
 
   addShips () {
